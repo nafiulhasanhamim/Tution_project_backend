@@ -32,8 +32,6 @@ const registerUser = async (req,res) => {
            } else  {
             status="approved"
           }
-          const sql = `INSERT into users (user_id,email,password,status,role,phone_number,name,id_card,address,profile_pic) 
-          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`
           const create_user = await pool.query(`INSERT into users 
           (user_id,email,password,status,role,phone_number,name,id_card,address,profile_pic) 
           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
@@ -53,15 +51,6 @@ const registerUser = async (req,res) => {
                 success: false,
                 message: "User is not created",
                 error: error,
-                name,
-                hash,
-                profile_pic_img,
-                id_card_img,
-                role,
-                address,
-                phone_number,
-                user_id,
-                sql
               });
             });
          });
