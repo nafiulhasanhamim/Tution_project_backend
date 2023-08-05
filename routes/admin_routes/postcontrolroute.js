@@ -11,7 +11,7 @@ const { addSubject, approvePost, declinedPost, getAllPendingPost, getAllApproved
 const { isAdmin } = require("../../controllers/user_controllers/authcontroller");
 
 
-adminpostcontrolrouter.post("/add-subject",isAdmin,addSubject);
+adminpostcontrolrouter.post("/add-subject",addSubject);
 adminpostcontrolrouter.post("/add-location",isAdmin,addLocation); 
 adminpostcontrolrouter.put("/approve-tution",isAdmin,approvePost);
 adminpostcontrolrouter.put("/delete-tution",isAdmin,declinedPost);
