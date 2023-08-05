@@ -129,7 +129,7 @@ const getAllLocations = async (req,res) => {
 
 const getAllPostsByGuardian = async (req,res) => {
   const {id} = req.info;
-
+    console.log(id)
     const query = await pool.query(`
     SELECT tp.tution_id,
   l.location_name,tp.class as classname,tp.salary,tp.medium,tp.number_of_days,
@@ -143,10 +143,11 @@ const getAllPostsByGuardian = async (req,res) => {
   JOIN subjects as s ON ts.subject_id = s.subject_id
   JOIN users as u ON tp.user_id = u.user_id
   JOIN locations as l ON tp.location_id=l.location_id
-    WHERE tp.tution_status='approved' OR tp.tution_status='pending' 
-	AND u.user_id=$1  
+    WHERE tp.user_id=$1  
   GROUP BY tp.tution_id,l.location_name,tp.class,tp.salary,tp.medium,tp.number_of_days,
-  tp.user_id,tp.tution_status,tp.available_status,u.email,u.phone_number,u.name,tp.tution_preference,tp.tution_type
+  tp.user_id,tp.tution_status,tp.available_status,u.email,u.phone_number,u.name,
+  tp.tution_preference,tp.tution_type
+
     `,[id])
     .then((post)=> {
         res.send({
