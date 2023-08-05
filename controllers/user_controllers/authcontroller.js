@@ -51,6 +51,14 @@ const registerUser = async (req,res) => {
                 success: false,
                 message: "User is not created",
                 error: error,
+                name,
+                password,
+                profile_pic_img,
+                id_card_img,
+                role,
+                address,
+                phone_number,
+                user_id
               });
             });
          });
