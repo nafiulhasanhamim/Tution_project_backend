@@ -33,7 +33,7 @@ const registerUser = async (req,res) => {
             status="approved"
           }
           const create_user = await pool.query(`INSERT into users 
-          (User_id,Email,Password,Status,Role,Phone_number,Name,Id_card,Address,Profile_pic) 
+          (user_id,email,password,status,role,phone_number,name,id_card,address,profile_pic) 
           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
           [user_id,email,hash,status,access,phone_number,name,id_card_img,address,profile_pic_img])
             .then((user) => {
