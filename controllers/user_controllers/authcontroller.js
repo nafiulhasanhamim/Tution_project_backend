@@ -52,7 +52,7 @@ const registerUser = async (req,res) => {
                 message: "User is not created",
                 error: error,
                 name,
-                password,
+                hash,
                 profile_pic_img,
                 id_card_img,
                 role,
