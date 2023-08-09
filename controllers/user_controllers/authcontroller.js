@@ -12,7 +12,7 @@ const registerUser = async (req,res) => {
     try {
         const {email,password,role,phone_number,name,id_card_img,address,profile_pic_img} = req.body;
         console.log(role)
-        const user = await pool.query("SELECT * FROM users WHERE email=$1",[email]);
+        const user = await pool.query("SELECT * FROM users WHERE email=$1 AND role=$2",[email,role]);
         if (user.rowCount===1) {
           return res.status(201).send({
             message : "This Email was Already Used"
