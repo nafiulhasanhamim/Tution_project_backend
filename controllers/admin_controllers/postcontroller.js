@@ -65,9 +65,9 @@ const addLocation = async (req,res) => {
 
 const deleteSubject = async (req,res) => {
   try {
-      const res = `
+      const res =await pool.query( `
       DELETE FROM subjects WHERE subject_name='Biology'
-      `
+      `)
       .then((location)=> {
           res.send({
               success: true,
