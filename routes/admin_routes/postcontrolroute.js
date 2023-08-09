@@ -13,7 +13,7 @@ const { isAdmin } = require("../../controllers/user_controllers/authcontroller")
 
 
 adminpostcontrolrouter.post("/add-subject",isAdmin,addSubject);
-adminpostcontrolrouter.post("/delete-subject",deleteSubject);
+adminpostcontrolrouter.post("/delete-subject",isAdmin,deleteSubject);
 adminpostcontrolrouter.post("/add-location",isAdmin,addLocation); 
 adminpostcontrolrouter.put("/approve-tution",isAdmin,approvePost);
 adminpostcontrolrouter.put("/delete-tution",isAdmin,declinedPost);
