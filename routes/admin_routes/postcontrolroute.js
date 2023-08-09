@@ -7,11 +7,13 @@ const { addSubject, approvePost, declinedPost, getAllPendingPost, getAllApproved
     infoAboutAParticularTution, getAllTutionInformation, filteringTutions, totalNoOfPendingUsers, 
     totalNoOfApprovedUsers, totalNoOfGuardians, totalNoOfApprovedTutions, 
     totalNoOfPendingTutions, 
-    addLocation} = require("../../controllers/admin_controllers/postcontroller");
+    addLocation,
+    deleteSubject} = require("../../controllers/admin_controllers/postcontroller");
 const { isAdmin } = require("../../controllers/user_controllers/authcontroller");
 
 
 adminpostcontrolrouter.post("/add-subject",isAdmin,addSubject);
+adminpostcontrolrouter.post("/delete-subject",deleteSubject);
 adminpostcontrolrouter.post("/add-location",isAdmin,addLocation); 
 adminpostcontrolrouter.put("/approve-tution",isAdmin,approvePost);
 adminpostcontrolrouter.put("/delete-tution",isAdmin,declinedPost);

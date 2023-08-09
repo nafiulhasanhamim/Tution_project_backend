@@ -34,6 +34,8 @@ const addSubject = async (req,res) => {
       }
 }
 
+
+
 const addLocation = async (req,res) => {
   try {
       const {location_name} = req.body;
@@ -46,6 +48,30 @@ const addLocation = async (req,res) => {
           res.send({
               success: true,
               message: "Location has successfully been added",
+            });
+      })
+      .catch((error) => {
+          res.send({
+            success: false,
+            message: "Something went wrong!!",
+            error: error,
+          });
+        });
+      
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+}
+
+const deleteSubject = async (req,res) => {
+  try {
+      const res = `
+      DELETE FROM subjects WHERE subject_name='Biology'
+      `
+      .then((location)=> {
+          res.send({
+              success: true,
+              message: "Subject has successfully been deleted",
             });
       })
       .catch((error) => {
@@ -485,4 +511,4 @@ const totalNoOfPendingUsers = async (req,res) => {
 module.exports = 
 {addSubject,approvePost,declinedPost,getAllPendingPost,getAllApprovedPost,
   infoAboutAParticularTution,getAllTutionInformation,filteringTutions,totalNoOfPendingUsers,
-  totalNoOfApprovedUsers,totalNoOfGuardians,totalNoOfApprovedTutions,totalNoOfPendingTutions,addLocation}
+  totalNoOfApprovedUsers,totalNoOfGuardians,totalNoOfApprovedTutions,totalNoOfPendingTutions,addLocation,deleteSubject}
